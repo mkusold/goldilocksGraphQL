@@ -22,6 +22,6 @@ const schema = makeExecutableSchema({
   resolvers,
 });
 
-modules.export = {
+module.exports = {
     schema
 }
