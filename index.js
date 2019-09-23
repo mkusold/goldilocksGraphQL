@@ -6,6 +6,7 @@ const { schema } = require("./api");
 
 const server = new ApolloServer({
   ...schema,
+  debug: false,
   playground: {
     endpoint: "/graphql",
     settings: {
