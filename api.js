@@ -31,7 +31,7 @@ const resolvers = {
   Bear: {
     age: (root, {yearType}) => {
       // 2 bear  years per human year
-      return yearType === 'HUMAN' ? root.age : root.age /2
+      return yearType === 'HUMAN' ? root.age : parseInt(root.age /2)
     }
   },
   Mutation: {
