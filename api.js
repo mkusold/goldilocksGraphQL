@@ -1,10 +1,13 @@
 const { makeExecutableSchema } = require('graphql-tools');
-const { dinnerOptions } = require('./data')
+const { bears, dinnerOptions } = require('./data')
 
 // The GraphQL schema in string form
 const typeDefs = `
   type Query { 
     porridge: [Porridge]
+  }
+  type Mutation { 
+    victim(name:String): ID
   }
 
   type Bear { 
@@ -23,8 +26,19 @@ const typeDefs = `
 // The resolvers
 const resolvers = {
   Query: { 
-      porridge: () => dinnerOptions
-     },
+    porridge: () => dinnerOptions
+  },
+  Mutation: {
+    victim: (_, {name}) => {
+      const bearIdx = bears.findIndex(bear => 
+        bear.name.toLowerCase() === name.toLowerCase()
+      );
+      if (bearIdx >= 0){
+        bears[bearIdx].isVictim = true;
+        return bears[bearIdx].bearSocialSecurity;
+      } 
+    }
+  }
 };
 
 // Put together a schema

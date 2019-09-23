@@ -18,7 +18,7 @@ const bears = [
         name: 'Baby Bear',
         age: 7,
         bearSocialSecurity: 3,
-        isVictim: true,
+        isVictim: false,
         GPA: 3.5
     }
 ];
