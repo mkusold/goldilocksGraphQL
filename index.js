@@ -1,19 +1,18 @@
 // FROM: https://www.apollographql.com/docs/apollo-server/v1/example/
-const express = require('express');
-const bodyParser = require('body-parser');
-const { graphqlExpress, graphiqlExpress } = require('apollo-server-express');
-const { schema } = require('./api');
+// with updates from : https://dev.to/gloriamaris/apollo-server-express-10-to-20-fix-graphiqlexpress-and-graphiqlexpress-is-not-a-function-in-a-tutorial-by-xoor-41jn
+// and https://www.apollographql.com/docs/apollo-server/getting-started/
+const { ApolloServer } = require("apollo-server");
+const { schema } = require("./api");
 
-// Initialize the app
-const app = express();
-
-// The GraphQL endpoint
-app.use('/graphql', bodyParser.json(), graphqlExpress({ schema }));
-
-// GraphiQL, a visual editor for queries
-app.use('/graphiql', graphiqlExpress({ endpointURL: '/graphql' }));
-
-// Start the server
-app.listen(3000, () => {
-  console.log('Go to http://localhost:3000/graphiql to run queries!');
+const server = new ApolloServer({
+  ...schema,
+  playground: {
+    endpoint: "/graphql",
+    settings: {
+      "editor.cursorShape.theme": "light"
+    }
+  }
+});
+server.listen().then(({ url }) => {
+  console.log(`🚀  Server ready at ${url}`);
 });
