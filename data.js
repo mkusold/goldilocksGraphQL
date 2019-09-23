@@ -2,15 +2,24 @@
 const bears = [
     {
         name: 'Papa Bear',
-        age: 32
+        age: 32,
+        bearSocialSecurity: 1,
+        isVictim: false,
+        GPA: 4.0
     },
     {
         name: 'Mama Bear',
-        age: 32
+        age: 32,
+        bearSocialSecurity: 2,
+        isVictim: false,
+        GPA: 4.0
     },
     {
         name: 'Baby Bear',
-        age: 7
+        age: 7,
+        bearSocialSecurity: 3,
+        isVictim: true,
+        GPA: 3.5
     }
 ];
 

@@ -3,10 +3,21 @@ const { dinnerOptions } = require('./data')
 
 // The GraphQL schema in string form
 const typeDefs = `
-  type Query { porridge: [Porridge] }
+  type Query { 
+    porridge: [Porridge]
+  }
 
-  type Bear { name: String, age: Int }
-  type Porridge { owner: Bear, temperature: String }
+  type Bear { 
+    name: String,
+    age: Int,
+    bearSocialSecurity: ID!,
+    isVictim: Boolean,
+    GPA: Float,
+  }
+  type Porridge { 
+    owner: Bear,
+    temperature: String
+  }
 `;
 
 // The resolvers
